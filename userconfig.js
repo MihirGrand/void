@@ -1,209 +1,282 @@
 const CONFIG = new Config({
   crypto: {
-    coin: 'ETH',
-    currency: 'USD',
-    refreshIn: 10
+    coin: "ETH",
+    currency: "USD",
+    refreshIn: 10,
   },
-  overrideStorage: true, // override localStorage with fixed userconfig values
+  overrideStorage: true,
   temperature: {
-    location: 'Matão, São Paulo',
-    scale: 'C'
+    location: "Mumbai",
+    scale: "C",
   },
   clock: {
-    format: 'h:i p',
-    iconColor: '#ff7b95'
+    format: "h:i p",
+    iconColor: "#ff7b95",
   },
   search: {
     engines: {
-      g: ['https://google.com/search?q=', 'Google'],
-      i: ['https://ixquick.com/do/search?q=', 'Ixquick'],
-      d: ['https://duckduckgo.com/html?q=', 'DuckDuckGo'],
-      y: ['https://youtube.com/results?search_query=', 'Youtube'],
-      w: ['https://en.wikipedia.org/w/index.php?search=', 'Wikipedia']
-    }
+      g: ["https://google.com/search?q=", "Google"],
+      d: ["https://duckduckgo.com/html?q=", "DuckDuckGo"],
+      y: ["https://youtube.com/results?search_query=", "Youtube"],
+    },
   },
   keybindings: {
-    "t": 'todo-list',
-    "s": 'search-bar'
+    t: "todo-list",
+    s: "search-bar",
   },
-  disabled: [],
+  disabled: ["crypto-rate", "crypto-popup", "crypto-diff"],
   openLastVisitedTab: false,
   tabs: [
     {
-      name: 'boards',
-      background_url: 'src/img/banners/bg-1.gif',
-      categories: [{
-        name: 'fun',
-        links: [
-          {
-            url: 'https://4chan.org/wsg/',
-            name: '/wsg/'
-          },
-          {
-            name: '/out/',
-            url: 'https://4chan.org/out',
-            icon: 'leaf',
-            icon_color: '#64876d'
-          },
-          {
-            name: '/lit/',
-            url: 'https://4chan.org/lit/',
-            icon: 'book'
-          },
-          {
-            name: '/v/',
-            url: 'https://4chan.org/v/',
-            icon: 'device-gamepad',
-            icon_color: '#8b647b'
-          },
-          {
-            name: '/p/',
-            url: 'https://4chan.org/p/',
-            icon: 'camera'
-          }
-        ]
-      },
-      {
-        name: 'Comfy',
-        links: [
-          {
-            name: '/lounge/',
-            url: 'https://sushigirl.us/lounge/catalog.html'
-          },
-          {
-            name: '/comfy/',
-            url: 'https://anon.cafe/comfy/catalog.html'
-          }
-        ]
-      },
-      {
-        name: 'Technology',
-        links: [
-          {
-            name: '/g/',
-            url: 'https://4chan.org/g/',
-          },
-          {
-            name: '/Δ/',
-            url: 'https://archive.arisuchan.jp/%CE%94/catalog.html'
-          },
-          {
-            name: '/λ/',
-            url: 'https://www.lainchan.org/%CE%BB/catalog.html'
-          },
-          {
-            name: '/sec/',
-            url: 'https://www.lainchan.org/sec/catalog.html'
-          },
-          {
-            name: '/prog/',
-            url: 'https://boards.420chan.org/prog/',
-            icon: 'code'
-          }
-        ]
-      }
-      ]
-    },
-    {
-      name: 'music',
-      background_url: 'src/img/banners/bg-2.gif',
+      name: "VOID",
+      background_url: "src/img/banners/bg-1.gif",
       categories: [
         {
-          name: 'music services',
+          name: "work",
           links: [
             {
-              url: 'https://soundcloud.com/',
-              icon: 'brand-soundcloud',
-              icon_color: '#c57750'
+              url: "https://mail.google.com",
+              name: "mail",
+              icon: "mail",
+              icon_color: "#88d8d8",
             },
             {
-              url: 'https://youtu.be/',
-              icon: 'brand-youtube',
-              icon_color: '#996767'
+              url: "https://docs.google.com",
+              name: "docs",
+              icon: "file",
+              icon_color: "#88d8d8",
             },
-            {
-              url: 'https://r-a-d.io/',
-              icon: 'radio'
-            },
-          ]
+          ],
         },
         {
-          name: 'music boards',
+          name: "acad",
           links: [
             {
-              name: '/music/',
-              url: 'https://lainchan.org/music/',
-              icon: 'disc'
+              name: "gc",
+              url: "https://classroom.google.com",
+              icon: "school",
+              icon_color: "#ff7b95",
+            },
+          ],
+        },
+        {
+          name: "UTIL",
+          links: [
+            {
+              name: "gpt",
+              url: "https://chatgpt.com",
+              icon: "brand-openai",
+              icon_color: "#f0f0f0",
             },
             {
-              name: '/mu/',
-              url: 'https://boards.4channel.org/mu/',
-            }
-          ]
-        }
-      ]
+              name: "deepseek",
+              url: "https://chat.deepseek.com",
+              icon: "fish",
+              icon_color: "#f0f0f0",
+            },
+            {
+              name: "wormhole",
+              url: "https://wormhole.app",
+              icon: "whirl",
+              icon_color: "#be196d",
+            },
+            {
+              name: "toffee",
+              url: "https://toffeeshare.com/",
+              icon: "candy",
+              icon_color: "#bf5823",
+            },
+            {
+              name: "cobalt",
+              url: "https://cobalt.tools/",
+              icon: "cat",
+              icon_color: "#f0f0f0",
+            },
+          ],
+        },
+      ],
     },
     {
-      name: 'tech',
-      background_url: 'src/img/banners/bg-3.gif',
+      name: "dev",
+      background_url: "src/img/banners/bg-3.gif",
       categories: [
         {
-          name: 'subreddits',
+          name: "dev",
           links: [
             {
-              name: 'r/startpages/',
-              url: 'https://www.reddit.com/r/startpages/'
+              name: "overflow",
+              url: "https://stackoverflow.com",
+              icon: "brand-stackoverflow",
+              icon_color: "#FDFD96",
             },
             {
-              name: 'r/unixporn',
-              url: 'https://www.reddit.com/r/unixporn/'
+              name: "github",
+              url: "https://github.com/mihirgrand/",
+              icon: "brand-github",
+              icon_color: "#ffffff",
             },
             {
-              name: 'r/mechkbds/',
-              url: 'https://www.reddit.com/r/MechanicalKeyboards/',
-              icon: 'keyboard',
-              icon_color: '#a57685'
+              name: "reg101",
+              url: "https://regex101.com/",
+              icon: "password",
+              icon_color: "#ffffff",
             },
             {
-              name: 'r/programming',
-              url: 'https://www.reddit.com/r/programming/'
-            }
-          ]
+              name: "it-tools",
+              url: "https://it-tools.tech/",
+              icon: "tool",
+              icon_color: "#18a55a",
+            },
+            {
+              name: "leetcode",
+              url: "https://leetcode.com/",
+              icon: "brand-leetcode",
+              icon_color: "#FDFD96",
+            },
+            {
+              name: "UIVerse",
+              url: "https://uiverse.io/",
+              icon: "square-letter-u",
+              icon_color: "#7960f0",
+            },
+          ],
         },
         {
-          name: 'blogs',
+          name: "design",
           links: [
             {
-              name: 'fasterthanli',
-              url: 'https://fasterthanli.me/articles',
-              icon: 'anchor'
+              name: "coolors",
+              url: "https://coolors.co",
+              icon: "palette",
+              icon_color: "#0066ff",
             },
             {
-              name: 'dev.to',
-              url: 'https://dev.to'
+              name: "phosphor",
+              url: "https://phosphoricons.com",
+              icon: "parking-circle",
+              icon_color: "#c4e456",
             },
             {
-              name: 'mataroa.blog',
-              url: 'https://collection.mataroa.blog',
-            }
-          ]
+              name: "gfonts",
+              url: "https://fonts.google.com",
+              icon: "brand-google",
+              icon_color: "#f0f0f0",
+            },
+            {
+              name: "undraw",
+              url: "https://undraw.co/illustrations",
+              icon: "user-circle",
+              icon_color: "#f0f0f0",
+            },
+            {
+              name: "toools",
+              url: "https://toools.design",
+              icon: "circles-relation",
+              icon_color: "#88d8d8",
+            },
+            {
+              name: "unsplash",
+              url: "https://unsplash.com",
+              icon: "brand-unsplash",
+              icon_color: "#f0f0f0",
+            },
+            {
+              name: "svgrepo",
+              url: "https://svgrepo.com",
+              icon: "file-type-svg",
+              icon_color: "#f0f0f0",
+            },
+            {
+              name: "shades",
+              url: "https://maketintsandshades.com/",
+              icon: "wash-dry-shade",
+              icon_color: "#cb248c",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "RELAX",
+      background_url: "src/img/banners/bg-2.gif",
+      categories: [
+        {
+          name: "socials",
+          links: [
+            {
+              url: "https://linkedin.com/",
+              icon: "brand-linkedin",
+              icon_color: "#0072b1",
+            },
+            {
+              url: "https://medium.com/",
+              icon: "brand-medium",
+              icon_color: "#f0f0f0",
+            },
+            {
+              url: "https://reddit.com/",
+              icon: "brand-reddit",
+              icon_color: "#FF4500",
+            },
+            {
+              url: "https://dev.to/",
+              icon: "square-letter-d",
+              icon_color: "#f0f0f0",
+            },
+            {
+              url: "https://deviantart.com/",
+              icon: "brand-deviantart",
+              icon_color: "#0fcc46",
+            },
+          ],
         },
         {
-          name: 'misc',
+          name: "MEDIA",
           links: [
             {
-              name: 'post office',
-              url: 'http://afternoon.dynu.com/letterbox.html',
-              icon: 'mailbox'
+              name: "youtube",
+              url: "https://youtube.com",
+              icon: "brand-youtube",
+              icon_color: "#FF0000",
             },
             {
-              name: 'rust docs',
-              url: 'https://doc.rust-lang.org/book/',
-              icon: 'notebook',
-              icon_color: '#977a3a'
-            }
-          ]
-        }
-      ]
-    }]
+              name: "hive",
+              url: "https://hivetoon.com",
+              icon: "brand-denodo",
+              icon_color: "#FF6961",
+            },
+            {
+              name: "asura",
+              url: "https://asuratoon.com",
+              icon: "crystal-ball",
+              icon_color: "#b19cd9",
+            },
+          ],
+        },
+        {
+          name: "YOINK",
+          links: [
+            {
+              name: "/fmhy/",
+              url: "https://fmhy.net",
+              icon: "player-play",
+              icon_color: "#F0F0F0",
+            },
+            {
+              name: "piracy",
+              url: "https://www.reddit.com/r/Piracy/wiki/megathread/",
+              icon: "skull",
+              icon_color: "#F0F0F0",
+            },
+            {
+              name: "sftwr",
+              url: "https://rentry.co/SoftwarePirates-Megathread",
+              icon: "skull",
+              icon_color: "#F0F0F0",
+            },
+          ],
+        },
+      ],
+    },
+  ],
 });

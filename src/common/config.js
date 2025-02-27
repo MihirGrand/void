@@ -2,38 +2,38 @@ class Config {
   defaults = {
     overrideStorage: false,
     crypto: {
-      currency: 'USD',
-      coin: 'ETH',
-      refreshIn: 15
+      currency: "USD",
+      coin: "ETH",
+      refreshIn: 500,
     },
     temperature: {
-      location: 'New York',
-      scale: 'C'
+      location: "Mumbai",
+      scale: "C",
     },
     clock: {
-      format: 'h:i p',
-      iconColor: '#ff7b95'
+      format: "h:i p",
+      iconColor: "#ff7b95",
     },
     search: {
       engines: {
-        g: ['https://google.com/search?q=', 'Google'],
-        y: ['https://youtube.com/results?search_query=', 'Youtube'],
-      }
+        g: ["https://google.com/search?q=", "Google"],
+        y: ["https://youtube.com/results?search_query=", "Youtube"],
+      },
     },
-    disabled: [],
+    disabled: ["crypto-rate", "crypto-popup", "crypto-diff"],
     openLastVisitedTab: false,
     tabs: [],
     keybindings: {
-      "t": 'todo-list',
-      "s": 'search-bar'
-    }
+      t: "todo-list",
+      s: "search-bar",
+    },
   };
 
   config;
 
-  constructor (config) {
+  constructor(config) {
     this.config = config;
-    this.storage = new Storage('config');
+    this.storage = new Storage("config");
 
     this.autoConfig();
     this.setKeybindings();
@@ -42,8 +42,7 @@ class Config {
     return new Proxy(this, {
       ...this,
       __proto__: this.__proto__,
-      set: (target, prop, value) =>
-        this.settingUpdatedCallback(target, prop, value)
+      set: (target, prop, value) => this.settingUpdatedCallback(target, prop, value),
     });
   }
 
@@ -67,14 +66,10 @@ class Config {
    * @returns {void}
    */
   autoConfig() {
-    Object.keys(this.defaults).forEach(setting => {
-      if (this.canOverrideStorage(setting))
-        this[setting] = this.config[setting];
-      else
-        if (this.storage.hasValue(setting))
-          this[setting] = this.storage.get(setting);
-        else
-          this[setting] = this.defaults[setting];
+    Object.keys(this.defaults).forEach((setting) => {
+      if (this.canOverrideStorage(setting)) this[setting] = this.config[setting];
+      else if (this.storage.hasValue(setting)) this[setting] = this.storage.get(setting);
+      else this[setting] = this.defaults[setting];
     });
   }
 
@@ -84,7 +79,7 @@ class Config {
    * @returns {bool}
    */
   canOverrideStorage(setting) {
-    return setting in this.config && (this.config.overrideStorage || setting === 'tabs');
+    return setting in this.config && (this.config.overrideStorage || setting === "tabs");
   }
 
   /**
@@ -113,9 +108,9 @@ class Config {
   }
 
   exportSettings() {
-    const anchor = document.createElement('a');
-    const filename = 'dawn.config.json';
-    const mimeType = 'data:text/plain;charset=utf-8,';
+    const anchor = document.createElement("a");
+    const filename = "dawn.config.json";
+    const mimeType = "data:text/plain;charset=utf-8,";
 
     anchor.href = mimeType + encodeURIComponent(stringify(this, null, 2));
     anchor.download = filename;

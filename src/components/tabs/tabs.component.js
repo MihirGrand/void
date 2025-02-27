@@ -4,34 +4,40 @@ class Links extends Component {
   }
 
   static getIcon(link) {
-    const defaultColor = '#726f6f';
+    const defaultColor = "#726f6f";
 
     return link.icon
       ? `<i class="ti ti-${link.icon} link-icon"
-            style="color: ${link.icon_color ?? defaultColor}"></i>` : '';
+            style="color: ${link.icon_color ?? defaultColor}"></i>`
+      : "";
   }
 
   static getAll(tabName, tabs) {
-    const { categories } = tabs.find(f => f.name === tabName);
+    const { categories } = tabs.find((f) => f.name === tabName);
 
     return `
-      ${ categories.map(({ name, links }) => {
-        return `
+      ${categories
+        .map(({ name, links }) => {
+          return `
           <li>
-            <h1>${ name }</h1>
+            <h1>${name}</h1>
               <div class="links-wrapper">
-              ${links.map(link =>
-                `
+              ${links
+                .map(
+                  (link) =>
+                    `
                   <div class="link-info">
-                    <a href="${ link.url }" target="_blank">
+                    <a href="${link.url}" target="_blank">
                       ${Links.getIcon(link)}
-                      ${link.name ? `<p class="link-name">${link.name}</p>` : ''}
+                      ${link.name ? `<p class="link-name">${link.name}</p>` : ""}
                     </a>
-                </div>`).join('')
-              }
+                </div>`
+                )
+                .join("")}
             </div>
           </li>`;
-      }).join('')}
+        })
+        .join("")}
     `;
   }
 }
@@ -47,12 +53,16 @@ class Category extends Component {
 
   static getAll(tabs) {
     return `
-      ${ tabs.map(({ name, background_url }, index) => {
-          return `<ul class="${ name }" ${Category.getBackgroundStyle(background_url)} ${index == 0 ? 'active' : ''}>
+      ${tabs
+        .map(({ name, background_url }, index) => {
+          return `<ul class="${name}" ${Category.getBackgroundStyle(background_url)} ${
+            index == 0 ? "active" : ""
+          }>
             <div class="banner"></div>
             <div class="links">${Links.getAll(name, tabs)}</div>
           </ul>`;
-      }).join('')}
+        })
+        .join("")}
     `;
   }
 }
@@ -71,7 +81,7 @@ class Tabs extends Component {
       this.resources.icons.tabler,
       this.resources.fonts.roboto,
       this.resources.fonts.raleway,
-      this.resources.libs.awoo
+      this.resources.libs.awoo,
     ];
   }
 
@@ -185,7 +195,7 @@ class Tabs extends Component {
       .categories .link-info:not(:last-child) { margin-right: .5em; }
 
       .categories ul .links a:hover {
-          transform: scale(1.2);
+          transform: scale(1.1);
           box-shadow: 0 0 rgba(0, 0, 0, 0.25), 0 0 0 rgba(0, 0, 0, .5), 0 -4px 5px rgba(0, 0, 0, .1);
           color: #fff;
       }

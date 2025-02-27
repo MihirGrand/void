@@ -2,10 +2,10 @@ class Statusbar extends Component {
   externalRefs = {};
 
   refs = {
-    categories: '.categories ul',
-    tabs: '#tabs ul li',
-    indicator: '.indicator',
-    addTab: '.add-tab'
+    categories: ".categories ul",
+    tabs: "#tabs ul li",
+    indicator: ".indicator",
+    addTab: ".add-tab",
   };
 
   modal;
@@ -19,20 +19,16 @@ class Statusbar extends Component {
 
   setDependencies() {
     this.externalRefs = {
-      categories: this.parentNode.querySelectorAll(this.refs.categories)
+      categories: this.parentNode.querySelectorAll(this.refs.categories),
     };
   }
 
   setAttributes() {
-    this.modal = RenderedComponents['modal-popup'];
+    this.modal = RenderedComponents["modal-popup"];
   }
 
   imports() {
-    return [
-      this.resources.fonts.roboto,
-      this.resources.icons.material,
-      this.resources.libs.awoo,
-    ];
+    return [this.resources.fonts.roboto, this.resources.icons.material, this.resources.libs.awoo];
   }
 
   style() {
@@ -194,7 +190,7 @@ class Statusbar extends Component {
         <div id="tabs">
             <cols>
                 <button class="+ add-tab">
-                  <span class="material-icons add-tab-icon">add</span>
+                  <span class="material-icons add-tab-icon">chevron_right</span>
                 </button>
                 <ul class="- indicator"></ul>
                 <div class="+ widgets col-end">
@@ -209,13 +205,11 @@ class Statusbar extends Component {
   setEvents() {
     // this.refs.addTab.onclick = () => this.addNewTab();
 
-    this.refs.tabs.forEach(tab =>
-      tab.onclick = ({ target }) => this.handleTabChange(target));
+    this.refs.tabs.forEach((tab) => (tab.onclick = ({ target }) => this.handleTabChange(target)));
 
     document.onkeydown = (e) => this.handleKeyPress(e);
 
-    if (CONFIG.openLastVisitedTab)
-      window.onbeforeunload = () => this.saveCurrentTab();
+    if (CONFIG.openLastVisitedTab) window.onbeforeunload = () => this.saveCurrentTab();
   }
 
   saveCurrentTab() {
@@ -228,7 +222,7 @@ class Statusbar extends Component {
   }
 
   handleTabChange(tab) {
-    this.activateByKey(Number(tab.getAttribute('tab-index')));
+    this.activateByKey(Number(tab.getAttribute("tab-index")));
   }
 
   handleKeyPress(event) {
@@ -248,9 +242,7 @@ class Statusbar extends Component {
   }
 
   setupModal() {
-    this.modal
-      .setTitle('Create New Tab')
-      .setContent(`
+    this.modal.setTitle("Create New Tab").setContent(`
         <p>WIP</p>
     `);
   }
@@ -264,12 +256,12 @@ class Statusbar extends Component {
     const categoriesCount = this.externalRefs.categories.length;
 
     for (let i = 0; i <= categoriesCount; i++)
-      this.refs.indicator.innerHTML += `<li tab-index=${i} ${i == 0 ? 'active' : ''}></li>`;
+      this.refs.indicator.innerHTML += `<li tab-index=${i} ${i == 0 ? "active" : ""}></li>`;
   }
 
   activate(target, item) {
-    target.forEach((i) => i.removeAttribute('active'));
-    item.setAttribute('active', '');
+    target.forEach((i) => i.removeAttribute("active"));
+    item.setAttribute("active", "");
   }
 
   connectedCallback() {
